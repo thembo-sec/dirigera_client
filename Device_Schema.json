@@ -1,0 +1,45 @@
+[
+    {
+        "id": "String",
+        "type": "String",
+        "deviceType": "String",
+        "createdAt": "String",
+        "isReachable": "Bool",
+        "lastSeen": "String",
+        "attributes": {
+            "customName": "String",
+            "model": "String",
+            "manufacturer": "String",
+            "firmwareVersion": "number",
+            "hardwareVersion": "number",
+            "serialNumber": "String",
+            "productCode": "String",
+            "isOn": "Bool",
+            "startupOnOff": "String",
+            "lightLevel": "Number",
+            "startUpCurrentLevel": "Number",
+            "identifyStarted": "String",
+            "identifyPeriod": "Number",
+            "permittingJoin": "Bool",
+            "otaStatus": "String",
+            "otaState": "String",
+            "otaProgress": "Number",
+            "otaPolicy": "String",
+            "otaScheduleStart": "String",
+            "otaScheduleEnd": "String"
+        },
+        "capabilities": {
+            "canSend": "Array",
+            "canReceive": "Array"
+        },
+        "room": {
+            "id": "String",
+            "name": "String",
+            "color": "String",
+            "icon": "String"
+        },
+        "deviceSet": "Array",
+        "remoteLinks": "Array",
+        "isHidden": "bool"
+    }
+]

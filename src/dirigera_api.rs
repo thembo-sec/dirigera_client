@@ -1,6 +1,7 @@
+use chrono::{Date, DateTime, NaiveDateTime, Utc};
+use serde::{Deserialize, Serialize};
+use serde_json::{map::ValuesMut, Value};
 use std::fmt;
-
-use serde::Deserialize;
 
 #[derive(Deserialize, Debug, Clone)]
 #[serde(rename_all = "lowercase")]
@@ -37,7 +38,32 @@ impl fmt::Display for TokenResponse {
     }
 }
 
-pub enum Token {
-    Token(String),
-    None,
+#[derive(Deserialize, Serialize, Debug)]
+pub struct Device {
+    id: String,
+    #[serde(rename = "type")]
+    primary_type: DeviceType,
+    #[serde(rename = "createdAt")]
+    created_at: DateTime<Utc>,
+    #[serde(rename = "isReachable")]
+    is_reachable: bool,
+    #[serde(rename = "lastSeen")]
+    last_seen: DateTime<Utc>,
+    attributes: Value,
+    capabilities: Value,
+    room: Option<Value>,
+    deviceSet: Vec<Value>,
+    #[serde(rename = "remoteLinks")]
+    remote_links: Vec<String>,
+    #[serde(rename = "isHidden")]
+    is_hidden: Option<bool>,
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+#[serde(rename_all = "lowercase")]
+enum DeviceType {
+    Outlet,
+    Controller,
+    Gateway,
+    Light,
 }

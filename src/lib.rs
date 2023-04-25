@@ -1,7 +1,7 @@
 use data_encoding::BASE64URL;
 use rand::Rng;
 use reqwest::{self, Client, ClientBuilder};
-use serde_json::Result;
+use serde_json::{Result, Value};
 use sha2::{Digest, Sha256};
 use std::{net::IpAddr, str::FromStr};
 use tokio::time::{sleep, Duration};
@@ -103,6 +103,7 @@ impl Dirigera {
 
     /// List all devices on the hub
     pub async fn list_devices(&self) {
+        // TODO better error handling
         let token = match &self.token {
             Some(val) => val,
             None => panic!(),
@@ -110,14 +111,15 @@ impl Dirigera {
 
         let dev_res = self
             .client
-            .get(format!("{}{}", self.base_url, "users"))
+            .get(format!("{}{}", self.base_url, "devices"))
             .header("Authorization", format!("Bearer {}", token))
             .send()
             .await
             .unwrap();
 
-        let dev_body = dev_res.text().await.unwrap();
-        println!("Devices: {:?}", dev_body);
+        let dev_body: Vec<dirigera_api::Device> =
+            serde_json::from_str(&dev_res.text().await.unwrap()).unwrap();
+        println!("Devices: {:#?}", dev_body);
     }
 
     /// Will check for an existing access token on init
