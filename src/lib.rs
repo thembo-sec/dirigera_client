@@ -1,6 +1,6 @@
 use data_encoding::BASE64URL;
 use rand::Rng;
-use reqwest::{self, ClientBuilder};
+use reqwest::{self, Client, ClientBuilder};
 use serde_json::Result;
 use sha2::{Digest, Sha256};
 use std::{net::IpAddr, str::FromStr};
@@ -23,21 +23,30 @@ pub struct Dirigera {
     ip: IpAddr,
     auth_url: String,
     token_url: String,
+    base_url: String,
     token: Token,
     code_verifier: String,
+    client: Client,
 }
 
 impl Dirigera {
     /// Instantiates a new Dirigera struct
     pub fn new(ip: &str) -> Dirigera {
+        let base_url = format!("https://{}:8443/v1/", ip.to_string());
         let auth_url = format!("https://{}:8443/v1/oauth/authorize", ip.to_string());
         let token_url = format!("https://{}:8443/v1/oauth/token", ip.to_string());
+
         Dirigera {
             ip: IpAddr::from_str(&ip).expect("Improper IP entered"),
             auth_url,
             token_url,
-            token: None,
+            base_url,
+            token: Dirigera::check_token(),
             code_verifier: get_code_verifier(),
+            client: ClientBuilder::new()
+                .danger_accept_invalid_certs(true) // Won't accept the device cert otherwise
+                .build()
+                .expect("Unable to build client"),
         }
     }
 
@@ -51,12 +60,8 @@ impl Dirigera {
             ("code_challenge_method", "S256"),
         ];
 
-        let client = ClientBuilder::new()
-            .danger_accept_invalid_certs(true) // Won't accept the device cert otherwise
-            .build()
-            .unwrap();
-
-        let auth_response = client
+        let auth_response = self
+            .client
             .get(&self.auth_url)
             .query(&params)
             .send()
@@ -78,7 +83,8 @@ impl Dirigera {
 
         sleep(Duration::new(10, 0)).await;
 
-        let token_response = client
+        let token_response = self
+            .client
             .post(&self.token_url)
             .header("Content-Type", "application/x-www-form-urlencoded")
             .body(data)
@@ -93,6 +99,27 @@ impl Dirigera {
         self.token = Some(format!("{}", token));
 
         Ok(())
+    }
+
+    pub fn list_devices(&self) {}
+
+    /// Will check for an existing access token on init
+    fn check_token() -> Token {
+        use dotenv::dotenv;
+        dotenv().ok();
+
+        let token = match std::env::var("ACCESS_TOKEN") {
+            Ok(val) => {
+                println!("Token found");
+                Some(val)
+            }
+            Err(_) => {
+                println!("No token found");
+                None
+            }
+        };
+
+        token
     }
 
     /// Creates a Base64URL encoded code_challenge as per RFC7636 for Oauth tokens
