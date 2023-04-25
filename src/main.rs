@@ -9,7 +9,7 @@ async fn main() -> Result<(), Error> {
     let ip = std::env::var("DIRIGERA_IP").expect("No device IP found");
     let mut d = dirigera_client::Dirigera::new(&ip);
 
-    d.get_access_token().await;
+    d.list_devices().await;
 
     println!("Dirigera: {:?}", d);
     Ok(())

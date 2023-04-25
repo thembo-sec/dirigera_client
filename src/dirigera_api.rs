@@ -36,3 +36,8 @@ impl fmt::Display for TokenResponse {
         }
     }
 }
+
+pub enum Token {
+    Token(String),
+    None,
+}

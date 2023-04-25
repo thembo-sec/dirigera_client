@@ -41,7 +41,7 @@ impl Dirigera {
             auth_url,
             token_url,
             base_url,
-            token: Dirigera::check_token(),
+            token: Dirigera::check_token_on_init(),
             code_verifier: get_code_verifier(),
             client: ClientBuilder::new()
                 .danger_accept_invalid_certs(true) // Won't accept the device cert otherwise
@@ -101,16 +101,33 @@ impl Dirigera {
         Ok(())
     }
 
-    pub fn list_devices(&self) {}
+    /// List all devices on the hub
+    pub async fn list_devices(&self) {
+        let token = match &self.token {
+            Some(val) => val,
+            None => panic!(),
+        };
+
+        let dev_res = self
+            .client
+            .get(format!("{}{}", self.base_url, "users"))
+            .header("Authorization", format!("Bearer {}", token))
+            .send()
+            .await
+            .unwrap();
+
+        let dev_body = dev_res.text().await.unwrap();
+        println!("Devices: {:?}", dev_body);
+    }
 
     /// Will check for an existing access token on init
-    fn check_token() -> Token {
+    fn check_token_on_init() -> Token {
         use dotenv::dotenv;
         dotenv().ok();
 
         let token = match std::env::var("ACCESS_TOKEN") {
             Ok(val) => {
-                println!("Token found");
+                println!("Token found: {}", val);
                 Some(val)
             }
             Err(_) => {
