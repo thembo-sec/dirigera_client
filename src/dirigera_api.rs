@@ -27,3 +27,12 @@ pub enum TokenResponse {
     #[serde(rename = "lowercase")]
     Error(String),
 }
+
+impl fmt::Display for TokenResponse {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            TokenResponse::AccessToken(a) => write!(f, "{}", a),
+            TokenResponse::Error(e) => write!(f, "{}", e),
+        }
+    }
+}

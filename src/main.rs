@@ -1,12 +1,16 @@
+use dotenv::dotenv;
 use reqwest::{Client, Error};
-use std::net::{IpAddr, Ipv4Addr};
 
 mod dirigera_api;
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
-    let mut d = dirigera_client::Dirigera::new("192.168.0.123");
+    dotenv().ok();
+    let ip = std::env::var("DIRIGERA_IP").expect("No device IP found");
+    let mut d = dirigera_client::Dirigera::new(&ip);
+
     d.get_access_token().await;
+
     println!("Dirigera: {:?}", d);
     Ok(())
 }

@@ -6,7 +6,7 @@ use sha2::{Digest, Sha256};
 use std::{net::IpAddr, str::FromStr};
 use tokio::time::{sleep, Duration};
 
-use crate::dirigera_api::AuthResponse;
+use crate::dirigera_api::{AuthResponse, TokenResponse};
 
 mod dirigera_api;
 
@@ -86,8 +86,11 @@ impl Dirigera {
             .await
             .unwrap();
 
-        let token_body = token_response.text().await.unwrap();
-        println!("Auth token body is {:?}", token_body);
+        let token: TokenResponse =
+            serde_json::from_str(&token_response.text().await.unwrap()).unwrap();
+
+        println!("Auth token body is {:?}", token);
+        self.token = Some(format!("{}", token));
 
         Ok(())
     }
