@@ -17,6 +17,7 @@ const CODE_LENGTH: usize = 128;
 type Token = Option<String>;
 
 /// Dirigera struct
+///
 /// Can be instantiated by calling Dirigera::new(IpAddr)
 #[derive(Debug)]
 pub struct Dirigera {
@@ -101,7 +102,7 @@ impl Dirigera {
         Ok(())
     }
 
-    /// List all devices on the hub
+    /// List all devices on the hub, returns an array of Devices
     pub async fn list_devices(&self) {
         // TODO better error handling
         let token = match &self.token {
@@ -154,6 +155,7 @@ impl Dirigera {
     }
 }
 
+/// Acquire a code verifier as per Oauth protocol
 fn get_code_verifier() -> String {
     let mut rng = rand::thread_rng();
 
