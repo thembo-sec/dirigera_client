@@ -8,7 +8,7 @@
     "servers": [
         {
             "url": "https://{device_ip}:8443/v1",
-            "description": "Dirigera device on the home network"
+            "description": "Dirigera device url on the home network"
         }
     ],
     "paths": {
@@ -69,28 +69,139 @@
                 }
             }
         },
-        "/devices/{id}": {},
-        "/devices/{id}/identify": {},
-        "/device-set": {},
-        "/device-set/{id}": {},
-        "/users": {},
-        "/users/{userId}": {},
-        "/users/me": {},
-        "/rooms": {},
-        "/rooms/{id}": {},
-        "/home": {},
-        "/hub/status": {},
-        "/hub/cloud-integration": {},
-        "/hub/ota/environment": {},
-        "/hub/ota/check": {},
-        "/hub/ota/update": {},
+        "/devices/{id}": {
+            "get": {
+                "summary": "Details of a specific device by id",
+                "operationId": "getDevice",
+                "responses": {
+                    "200": {
+                        "description": "Details of a device on the network",
+                        "headers": {
+                            "api-version": {
+                                "description": "API version used by the Dirigera hub",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "content-type": {},
+                            "content-length": {
+                                "description": "Response length",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "etag": {
+                                "description": "Entity tag",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "date": {
+                                "description": "GMT time that the request was made",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "connection": {
+                                "description": "Connection type",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "keep-alive": {
+                                "description": "time connection is kept alive",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Device"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {},
+            "patch": {}
+        },
+        "/devices/all": {
+            "patch": {}
+        },
+        "/devices/{id}/identify": {
+            "put": {}
+        },
+        "devices/{groupType}/{groupId}": {
+            "patch": {}
+        },
+        "/device-set": {
+            "post": {}
+        },
+        "/device-set/{id}": {
+            "put": {},
+            "post": {},
+            "delete": {}
+        },
+        "/users": {
+            "get": {}
+        },
+        "/users/{userId}": {
+            "delete": {}
+        },
+        "/users/me": {
+            "get": {}
+        },
+        "/rooms": {
+            "get": {},
+            "post": {}
+        },
+        "/rooms/{id}": {
+            "put": {},
+            "delete": {}
+        },
+        "/home": {
+            "get": {}
+        },
+        "/hub/status": {
+            "get": {}
+        },
+        "/hub/cloud-integration": {
+            "put": {}
+        },
+        "/hub/ota/environment": {
+            "put": {}
+        },
+        "/hub/ota/check": {
+            "put": {}
+        },
+        "/hub/ota/update": {
+            "put": {}
+        },
         "/remoteLinks/{remoteLinkId}/targets": {},
-        "/scenes": {},
-        "/scenes/{id}": {},
-        "/scenes/{id}/trigger": {},
-        "/music": {},
+        "/scenes": {
+            "get": {},
+            "post": {}
+        },
+        "/scenes/{id}": {
+            "get": {},
+            "delete": {}
+        },
+        "/scenes/{id}/trigger": {
+            "post": {}
+        },
+        "/music": {
+            "get": {}
+        },
         "/oauth/authorize": {},
-        "/oauth/token": {}
+        "/oauth/authorize/{transaction_id}": {
+            "get": {}
+        },
+        "/oauth/token": {
+            "post": {}
+        }
     },
     "components": {
         "schemas": {
@@ -98,7 +209,8 @@
                 "type": "object",
                 "required": [
                     "id",
-                    "primary_type",
+                    "type",
+                    "device_type",
                     "created_at",
                     "is_reachable",
                     "last_seen",
@@ -107,7 +219,44 @@
                     "deviceSet",
                     "is_hidden"
                 ],
-                "properties": {}
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "device_type": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "is_reachable": {
+                        "type": "bool"
+                    },
+                    "last_seen": {
+                        "type": "string"
+                    },
+                    "attributes": {
+                        "type": "array"
+                    },
+                    "capabilities": {
+                        "type": "array"
+                    },
+                    "deviceSet": {
+                        "type": "array"
+                    },
+                    "is_hidden": {
+                        "type": "bool"
+                    },
+                    "remoteLinks": {
+                        "type": "array"
+                    },
+                    "relationId": {
+                        "type": "string"
+                    }
+                }
             },
             "Devices": {
                 "type": "array",

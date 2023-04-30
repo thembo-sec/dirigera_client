@@ -112,7 +112,7 @@ impl Dirigera {
 
         let dev_res = self
             .client
-            .get(format!("{}{}", self.base_url, "devices"))
+            .get(format!("{}{}", self.base_url, "home"))
             .header("Authorization", format!("Bearer {}", token))
             .send()
             .await
@@ -120,12 +120,17 @@ impl Dirigera {
 
         let dev_status = &dev_res.status().clone();
         let dev_head = &dev_res.headers().clone();
-        let dev_body: Value = serde_json::from_str(&dev_res.text().await.unwrap()).unwrap();
+        let dev_body: Value = serde_json::from_str(
+            &dev_res
+                .text()
+                .await
+                .unwrap_or_else(|error| panic!("Getting body: {:?}", error)),
+        )
+        .unwrap();
+
         println!(
-            "Status: {:#?}\nHeaders: {:#?}\nDevices: {}",
-            dev_status,
-            dev_head,
-            serde_json::to_string_pretty(&dev_body).unwrap()
+            "Status: {:#?}\nHeaders: {:#?}\nDevices: {:#?}",
+            dev_status, dev_head, dev_body
         );
     }
 
@@ -171,8 +176,6 @@ fn get_code_verifier() -> String {
             CODE_ALPHABET[idx] as char
         })
         .collect();
-
-    println!("Code Verifier: {:?}", code_verifier);
 
     code_verifier
 }
