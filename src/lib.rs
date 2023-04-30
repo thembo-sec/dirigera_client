@@ -118,9 +118,15 @@ impl Dirigera {
             .await
             .unwrap();
 
-        let dev_body: Vec<dirigera_api::Device> =
-            serde_json::from_str(&dev_res.text().await.unwrap()).unwrap();
-        println!("Devices: {:#?}", dev_body);
+        let dev_status = &dev_res.status().clone();
+        let dev_head = &dev_res.headers().clone();
+        let dev_body: Value = serde_json::from_str(&dev_res.text().await.unwrap()).unwrap();
+        println!(
+            "Status: {:#?}\nHeaders: {:#?}\nDevices: {}",
+            dev_status,
+            dev_head,
+            serde_json::to_string_pretty(&dev_body).unwrap()
+        );
     }
 
     /// Will check for an existing access token on init

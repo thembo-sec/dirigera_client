@@ -1,0 +1,371 @@
+[
+    {
+        "attributes": {
+            "customName": "Name",
+            "firmwareVersion": "2.3.089",
+            "hardwareVersion": "1",
+            "identifyPeriod": 0,
+            "identifyStarted": "2000-01-01T00:00:00.000Z",
+            "isOn": false,
+            "lightLevel": 77,
+            "manufacturer": "IKEA of Sweden",
+            "model": "TRADFRI control outlet",
+            "otaPolicy": "autoUpdate",
+            "otaProgress": 0,
+            "otaScheduleEnd": "00:00",
+            "otaScheduleStart": "00:00",
+            "otaState": "readyToCheck",
+            "otaStatus": "upToDate",
+            "permittingJoin": false,
+            "productCode": "E1603",
+            "serialNumber": "",
+            "startUpCurrentLevel": -1,
+            "startupOnOff": "startPrevious"
+        },
+        "capabilities": {
+            "canReceive": [
+                "customName",
+                "isOn",
+                "lightLevel"
+            ],
+            "canSend": []
+        },
+        "createdAt": "2023-04-14T06:42:15.000Z",
+        "deviceSet": [],
+        "deviceType": "outlet",
+        "id": "",
+        "isHidden": false,
+        "isReachable": true,
+        "lastSeen": "2023-04-29T22:47:25.000Z",
+        "remoteLinks": [
+            ""
+        ],
+        "room": {
+            "color": "pantone_16_0940_tcx",
+            "icon": "rooms_coat_hanger",
+            "id": "b5984373-d403-442c-805a-8be55834b533",
+            "name": "Hallway"
+        },
+        "type": "outlet"
+    },
+    {
+        "attributes": {
+            "customName": "",
+            "firmwareVersion": "2.3.089",
+            "hardwareVersion": "1",
+            "identifyPeriod": 0,
+            "identifyStarted": "2000-01-01T00:00:00.000Z",
+            "isOn": false,
+            "lightLevel": 77,
+            "manufacturer": "IKEA of Sweden",
+            "model": "TRADFRI control outlet",
+            "otaPolicy": "autoUpdate",
+            "otaProgress": 0,
+            "otaScheduleEnd": "00:00",
+            "otaScheduleStart": "00:00",
+            "otaState": "readyToCheck",
+            "otaStatus": "upToDate",
+            "permittingJoin": false,
+            "productCode": "E1603",
+            "serialNumber": "",
+            "startUpCurrentLevel": -1,
+            "startupOnOff": "startPrevious"
+        },
+        "capabilities": {
+            "canReceive": [
+                "customName",
+                "isOn",
+                "lightLevel"
+            ],
+            "canSend": []
+        },
+        "createdAt": "2023-04-14T06:40:21.000Z",
+        "deviceSet": [],
+        "deviceType": "outlet",
+        "id": "",
+        "isHidden": false,
+        "isReachable": true,
+        "lastSeen": "2023-04-28T23:39:13.000Z",
+        "remoteLinks": [
+            ""
+        ],
+        "room": {
+            "color": "ikea_lilac_no_3",
+            "icon": "rooms_cutlery",
+            "id": "",
+            "name": "Dining room"
+        },
+        "type": "outlet"
+    },
+    {
+        "attributes": {
+            "customName": "",
+            "firmwareVersion": "2.3.089",
+            "hardwareVersion": "1",
+            "identifyPeriod": 0,
+            "identifyStarted": "2000-01-01T00:00:00.000Z",
+            "isOn": false,
+            "lightLevel": 77,
+            "manufacturer": "IKEA of Sweden",
+            "model": "TRADFRI control outlet",
+            "otaPolicy": "autoUpdate",
+            "otaProgress": 0,
+            "otaScheduleEnd": "00:00",
+            "otaScheduleStart": "00:00",
+            "otaState": "readyToCheck",
+            "otaStatus": "upToDate",
+            "permittingJoin": false,
+            "productCode": "E1603",
+            "serialNumber": "",
+            "startUpCurrentLevel": -1,
+            "startupOnOff": "startPrevious"
+        },
+        "capabilities": {
+            "canReceive": [
+                "customName",
+                "isOn",
+                "lightLevel"
+            ],
+            "canSend": []
+        },
+        "createdAt": "2023-04-14T07:03:38.000Z",
+        "deviceSet": [],
+        "deviceType": "outlet",
+        "id": "",
+        "isHidden": false,
+        "isReachable": true,
+        "lastSeen": "2023-04-29T19:47:44.000Z",
+        "remoteLinks": [
+            ""
+        ],
+        "room": {
+            "color": "ikea_green_no_65",
+            "icon": "rooms_sofa",
+            "id": "",
+            "name": "Living room"
+        },
+        "type": "outlet"
+    },
+    {
+        "attributes": {
+            "batteryPercentage": 90,
+            "customName": "Rectangle 1",
+            "firmwareVersion": "2.4.5",
+            "hardwareVersion": "1",
+            "isOn": false,
+            "lightLevel": 1,
+            "manufacturer": "IKEA of Sweden",
+            "model": "Remote Control N2",
+            "otaPolicy": "autoUpdate",
+            "otaProgress": 0,
+            "otaScheduleEnd": "00:00",
+            "otaScheduleStart": "00:00",
+            "otaState": "readyToCheck",
+            "otaStatus": "upToDate",
+            "permittingJoin": false,
+            "productCode": "E2001",
+            "serialNumber": ""
+        },
+        "capabilities": {
+            "canReceive": [
+                "customName"
+            ],
+            "canSend": [
+                "isOn",
+                "lightLevel"
+            ]
+        },
+        "createdAt": "2023-04-28T16:10:35.000Z",
+        "deviceSet": [],
+        "deviceType": "lightController",
+        "id": "",
+        "isHidden": false,
+        "isReachable": true,
+        "lastSeen": "2023-04-28T16:40:24.000Z",
+        "remoteLinks": [],
+        "room": {
+            "color": "ikea_lilac_no_3",
+            "icon": "rooms_cutlery",
+            "id": "",
+            "name": "Dining room"
+        },
+        "type": "controller"
+    },
+    {
+        "attributes": {
+            "backendConnected": false,
+            "backendConnectionPersistent": false,
+            "backendCountryCode": "AU",
+            "backendOnboardingComplete": true,
+            "backendRegion": "ap-southeast-2",
+            "coordinates": {
+                "accuracy": -1,
+                "latitude": -34.95495495495496,
+                "longitude": 138.5641649311407
+            },
+            "coredump": false,
+            "countryCode": "XZ",
+            "customName": "",
+            "firmwareVersion": "2.287.1",
+            "hardwareVersion": "P2.5",
+            "identifyPeriod": -1,
+            "identifyStarted": "2023-04-21T04:37:11.000Z",
+            "isOn": false,
+            "logLevel": 3,
+            "manufacturer": "IKEA of Sweden",
+            "model": "DIRIGERA Hub for smart products",
+            "nextSunRise": "2023-04-30T21:22:00.000Z",
+            "nextSunSet": "2023-04-30T08:06:00.000Z",
+            "otaPolicy": "autoDownload",
+            "otaProgress": 0,
+            "otaScheduleEnd": "00:00",
+            "otaScheduleStart": "00:00",
+            "otaState": "readyToCheck",
+            "otaStatus": "upToDate",
+            "permittingJoin": false,
+            "serialNumber": "",
+            "timezone": "",
+            "userConsents": [
+                {
+                    "name": "analytics",
+                    "value": "disabled"
+                },
+                {
+                    "name": "diagnostics",
+                    "value": "enabled"
+                }
+            ]
+        },
+        "capabilities": {
+            "canReceive": [
+                "customName",
+                "permittingJoin",
+                "userConsents",
+                "logLevel",
+                "time",
+                "timezone",
+                "countryCode",
+                "coordinates"
+            ],
+            "canSend": []
+        },
+        "createdAt": "2023-02-10T12:43:53.140Z",
+        "deviceSet": [],
+        "deviceType": "gateway",
+        "id": "",
+        "isReachable": true,
+        "lastSeen": "2023-04-30T04:24:00.480Z",
+        "relationId": "eee18a80-b1f5-4986-850d-75ae96631ff9",
+        "remoteLinks": [],
+        "type": "gateway"
+    },
+    {
+        "attributes": {
+            "customName": "",
+            "firmwareVersion": "2.3.086",
+            "hardwareVersion": "1",
+            "identifyPeriod": 0,
+            "identifyStarted": "2000-01-01T00:00:00.000Z",
+            "isOn": false,
+            "lightLevel": 87,
+            "manufacturer": "IKEA of Sweden",
+            "model": "TRADFRI Driver 10W",
+            "otaPolicy": "autoUpdate",
+            "otaProgress": 0,
+            "otaScheduleEnd": "00:00",
+            "otaScheduleStart": "00:00",
+            "otaState": "readyToCheck",
+            "otaStatus": "upToDate",
+            "permittingJoin": false,
+            "productCode": "ICPSHC2410EUIL1",
+            "serialNumber": "",
+            "startUpCurrentLevel": -1,
+            "startupOnOff": "startOn"
+        },
+        "capabilities": {
+            "canReceive": [
+                "customName",
+                "isOn",
+                "lightLevel"
+            ],
+            "canSend": []
+        },
+        "createdAt": "2023-04-14T11:56:01.000Z",
+        "deviceSet": [],
+        "deviceType": "light",
+        "id": "",
+        "isHidden": false,
+        "isReachable": true,
+        "lastSeen": "2023-04-29T22:47:26.000Z",
+        "remoteLinks": [
+            ""
+        ],
+        "room": {
+            "color": "ikea_yellow_no_24",
+            "icon": "rooms_bed",
+            "id": "",
+            "name": "Bedroom"
+        },
+        "type": "light"
+    },
+    {
+        "attributes": {
+            "circadianRhythmMode": "",
+            "colorHue": 29.9981689453125,
+            "colorMode": "color",
+            "colorSaturation": 0.7992125984251969,
+            "colorTemperature": 2702,
+            "colorTemperatureMax": 2202,
+            "colorTemperatureMin": 4000,
+            "customName": "Bedroom light",
+            "firmwareVersion": "1.0.021",
+            "hardwareVersion": "1",
+            "identifyPeriod": 0,
+            "identifyStarted": "2000-01-01T00:00:00.000Z",
+            "isOn": false,
+            "lightLevel": 87,
+            "manufacturer": "IKEA of Sweden",
+            "model": "TRADFRI bulb E14 CWS 470lm",
+            "otaPolicy": "autoUpdate",
+            "otaProgress": 0,
+            "otaScheduleEnd": "00:00",
+            "otaScheduleStart": "00:00",
+            "otaState": "readyToCheck",
+            "otaStatus": "upToDate",
+            "permittingJoin": false,
+            "productCode": "LED1925G6",
+            "serialNumber": "",
+            "startUpCurrentLevel": -1,
+            "startupOnOff": "startOn",
+            "startupTemperature": -1
+        },
+        "capabilities": {
+            "canReceive": [
+                "customName",
+                "isOn",
+                "lightLevel",
+                "colorTemperature",
+                "colorHue",
+                "colorSaturation"
+            ],
+            "canSend": []
+        },
+        "createdAt": "2023-04-14T06:06:17.000Z",
+        "deviceSet": [],
+        "deviceType": "light",
+        "id": "",
+        "isHidden": false,
+        "isReachable": true,
+        "lastSeen": "2023-04-29T22:47:26.000Z",
+        "remoteLinks": [
+            ""
+        ],
+        "room": {
+            "color": "ikea_yellow_no_24",
+            "icon": "rooms_bed",
+            "id": "",
+            "name": "Bedroom"
+        },
+        "type": "light"
+    }
+]

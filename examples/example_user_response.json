@@ -1,0 +1,92 @@
+[
+    {
+        "audience": "homesmart.local",
+        "createdTimestamp": "2023-04-14T06:01:52.000Z",
+        "email": "",
+        "name": "Google, Pixel 5",
+        "remoteUser": 0,
+        "role": "home_member",
+        "uid": "cceed2cc-eb1f-4ba2-9358-b4c1e8505867",
+        "verifiedUid": ""
+    },
+    {
+        "audience": "homesmart.local",
+        "createdTimestamp": "2023-04-14T06:08:19.000Z",
+        "email": "",
+        "name": "iPhone",
+        "remoteUser": 0,
+        "role": "home_member",
+        "uid": "d9ef0e20-261d-44b6-a478-f25857aec88c",
+        "verifiedUid": ""
+    },
+    {
+        "audience": "homesmart.local",
+        "createdTimestamp": "2023-04-16T07:38:17.000Z",
+        "email": "",
+        "name": "Google, Pixel 5",
+        "remoteUser": 0,
+        "role": "home_member",
+        "uid": "dee49f55-7b76-4c03-aab4-7fe90c5e140d",
+        "verifiedUid": ""
+    },
+    {
+        "audience": "homesmart.local",
+        "createdTimestamp": "2023-04-17T13:05:35.000Z",
+        "email": "",
+        "name": "iPhone",
+        "remoteUser": 0,
+        "role": "home_member",
+        "uid": "c84db4e1-84b8-4b69-806d-bec70a21904e",
+        "verifiedUid": ""
+    },
+    {
+        "audience": "homesmart.local",
+        "createdTimestamp": "2023-04-20T13:16:21.000Z",
+        "email": "",
+        "name": "Google, Pixel 7",
+        "remoteUser": 0,
+        "role": "home_member",
+        "uid": "4b12a17f-de31-4469-a285-78df01ff3765",
+        "verifiedUid": ""
+    },
+    {
+        "audience": "homesmart.local",
+        "createdTimestamp": "2023-04-22T05:02:23.000Z",
+        "email": "",
+        "name": "DESKTOP-4MCQF0B",
+        "remoteUser": 0,
+        "role": "home_member",
+        "uid": "688762e9-973c-4460-984d-03a3d3ef781f",
+        "verifiedUid": ""
+    },
+    {
+        "audience": "homesmart.local",
+        "createdTimestamp": "2023-04-22T05:16:18.000Z",
+        "email": "",
+        "name": "DESKTOP-4MCQF0B",
+        "remoteUser": 0,
+        "role": "home_member",
+        "uid": "5ec492a3-e66c-4a60-a73b-a79f4f72a1d9",
+        "verifiedUid": ""
+    },
+    {
+        "audience": "homesmart.local",
+        "createdTimestamp": "2023-04-25T01:19:59.000Z",
+        "email": "",
+        "name": "test_app",
+        "remoteUser": 0,
+        "role": "home_member",
+        "uid": "46b5d6b2-9436-40a0-9a39-66b4435b79bf",
+        "verifiedUid": ""
+    },
+    {
+        "audience": "homesmart.local",
+        "createdTimestamp": "2023-04-25T01:46:09.000Z",
+        "email": "",
+        "name": "test_app",
+        "remoteUser": 0,
+        "role": "home_member",
+        "uid": "2164c482-476d-449c-a865-c584a20f365a",
+        "verifiedUid": ""
+    }
+]
