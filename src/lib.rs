@@ -1,6 +1,7 @@
 use data_encoding::BASE64URL;
+use oauth2::HttpRequest;
 use rand::Rng;
-use reqwest::{self, Client, ClientBuilder};
+use reqwest::{self, header, Client, ClientBuilder, Method};
 use serde_json::{Result, Value};
 use sha2::{Digest, Sha256};
 use std::{net::IpAddr, str::FromStr};
@@ -19,7 +20,7 @@ type Token = Option<String>;
 /// Dirigera struct
 ///
 /// Can be instantiated by calling Dirigera::new(IpAddr)
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Dirigera {
     ip: IpAddr,
     auth_url: String,
@@ -37,19 +38,41 @@ impl Dirigera {
         let auth_url = format!("https://{}:8443/v1/oauth/authorize", ip.to_string());
         let token_url = format!("https://{}:8443/v1/oauth/token", ip.to_string());
 
+        let token = Dirigera::check_token_on_init();
+
         Dirigera {
             ip: IpAddr::from_str(&ip).expect("Improper IP entered"),
             auth_url,
             token_url,
             base_url,
-            token: Dirigera::check_token_on_init(),
+            token: token.clone(),
             code_verifier: get_code_verifier(),
-            client: ClientBuilder::new()
-                .danger_accept_invalid_certs(true) // Won't accept the device cert otherwise
-                .build()
-                .expect("Unable to build client"),
+            client: Dirigera::build_client(token),
         }
     }
+
+    fn build_client(token: Token) -> Client {
+        let mut headers = header::HeaderMap::new();
+        let auth_token = match token {
+            Some(i) => i,
+            None => panic!(),
+        };
+
+        let mut auth_value =
+            header::HeaderValue::from_str(&format!("Bearer {}", &auth_token)).unwrap();
+        auth_value.set_sensitive(true);
+        headers.insert(header::AUTHORIZATION, auth_value);
+
+        let new_client = ClientBuilder::new()
+            .danger_accept_invalid_certs(true)
+            .default_headers(headers)
+            .build()
+            .expect("Unable to build client");
+
+        new_client
+    }
+
+    pub async fn build_request(&self, method: Method) {}
 
     /// Acquires an access token for Dirigera struct
     pub async fn get_access_token(&mut self) -> Result<()> {
@@ -104,16 +127,9 @@ impl Dirigera {
 
     /// List all devices on the hub, returns an array of Devices
     pub async fn list_devices(&self) {
-        // TODO better error handling
-        let token = match &self.token {
-            Some(val) => val,
-            None => panic!(),
-        };
-
         let dev_res = self
             .client
             .get(format!("{}{}", self.base_url, "home"))
-            .header("Authorization", format!("Bearer {}", token))
             .send()
             .await
             .unwrap();
